@@ -1,10 +1,9 @@
 #!/bin/bash
 #touch log_upscaled_`date "+%Y%m%d_%H.%M"`.txt
 cat /dev/null >log_upscaled_*
-touch log_upscaled_`date "+%Y%m%d"`.txt
 cd /usr/share/nginx/html/
 echo " ------ Start of Re-Indexing job at ---------"
-touch log_upscaled_`date "+%Y%m%d"`.txt
+sudo touch log_upscaled_`date "+%Y%m%d"`.txt
 date >> log_upscaled_`date "+%Y%m%d"`.txt
 start=$(date +%Y-%m-%d.%H:%M:%S) >>log_upscaled_`date "+%Y%m%d"`.txt
 echo " ----- Start of Indexing with upscaled jobs ---------" >>log_upscaled_`date "+%Y%m%d"`.txt
