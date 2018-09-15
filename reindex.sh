@@ -32,6 +32,6 @@ echo "End time   :" $end    >>log_upscaled_`date "+%Y%m%d"`.txt
 echo "|_________________________________________|"  >>log_upscaled_`date "+%Y%m%d"`.txt
 
 
-echo "Re-indexing done with upscalled " `date`| sendmail rajesh.shisodiya@gspann.com
+echo "Re-indexing done with upscalled " `date`| /usr/bin/sendmail rajesh.shisodiya@gspann.com
 sleep 3;
-sendmail rajesh.shisodiya < log_upscaled_`date "+%Y%m%d"`.txt
+/usr/bin/sendmail rajesh.shisodiya < log_upscaled_`date "+%Y%m%d"`.txt
