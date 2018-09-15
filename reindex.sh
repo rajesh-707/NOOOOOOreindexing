@@ -9,14 +9,14 @@ date >> log_upscaled_`date "+%Y%m%d"`.txt
 start=$(date +%Y-%m-%d.%H:%M:%S) >>log_upscaled_`date "+%Y%m%d"`.txt
 echo " ----- Start of Indexing with upscaled jobs ---------" >>log_upscaled_`date "+%Y%m%d"`.txt
  echo " Runnign Job indexer:reset:  " >> log_upscaled_`date "+%Y%m%d"`.txt
- time php bin/magento indexer:reset >>log_upscaled_`date "+%Y%m%d"`.txt
+ sudo php bin/magento indexer:reset >>log_upscaled_`date "+%Y%m%d"`.txt
  echo "Start time Indexing of job at :"  >>log_upscaled_`date "+%Y%m%d"`.txt
  date >>log_upscaled_`date "+%Y%m%d"`.txt
  sleep 2;
 
 
 date
-php bin/magento indexer:reindex >>log_upscaled_`date "+%Y%m%d"`.txt
+sudo php bin/magento indexer:reindex >>log_upscaled_`date "+%Y%m%d"`.txt
 
 
 date
