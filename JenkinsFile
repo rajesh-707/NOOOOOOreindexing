@@ -32,7 +32,7 @@ pipeline {
                         try {
                           
                           sh "sleep 60"
-                          sh "ssh ${host_name} bash -s < reindex.sh"
+                          sh "ssh -i ${host_name} bash -s < reindex.sh"
                           env.Stage_Name = "operation"
 
                           } catch (e) {
