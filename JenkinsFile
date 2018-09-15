@@ -32,7 +32,7 @@ pipeline {
                         try {
                           
                           sh "sleep 60"
-                          sh "ssh ubuntu@ec2-34-238-153-107.compute-1.amazonaws.com bash -s < reindex.sh"
+                          sh "ssh ${host_name} bash -s < reindex.sh"
                           env.Stage_Name = "operation"
 
                           } catch (e) {
