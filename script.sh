@@ -48,10 +48,13 @@ aws ec2 reboot-instances --instance-ids $2
 elif [ "$1" = "RDS" ]; then
 echo "ARG1=DB-INSTANCE-IDENTIFIER ARG2=DB-INSTANCE-CLASS"
 inputparams
-aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
+#aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
+aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately --region eu-west-1
 while [ $? -ne 0 ]; do
 sleep 60 ;
-aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
+#aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
+aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately --region eu-west-1
+
 done
 
 else 
