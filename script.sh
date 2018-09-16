@@ -11,6 +11,13 @@ PositionalParamExists="$1"
 PositionalParamExists1="$1"
 PositionalParamExists2="$2"
 
+
+
+function check () {
+aws rds modify-db-instance --db-instance-identifier devdb --db-instance-class db.t2.large --apply-immediately --region eu-west-1 ;
+until [[ $? -eq 0 ]]; do aws rds modify-db-instance --db-instance-identifier devdb --db-instance-class db.t2.large --apply-immediately --region eu-west-1; done
+}
+
 function inputparams () {
 
 if [ -z "${PositionalParamExists1}" ] && [ -z "${PositionalParamExists2}" ]; then
@@ -48,16 +55,9 @@ aws ec2 reboot-instances --instance-ids $2
 elif [ "$1" = "RDS" ]; then
 echo "ARG1=DB-INSTANCE-IDENTIFIER ARG2=DB-INSTANCE-CLASS"
 inputparams
-#aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
 aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately --region eu-west-1
-while [ $? -ne 0 ]; do
-sleep 60 ;
-#aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately
-aws rds modify-db-instance --db-instance-identifier $2 --db-instance-class $3 --apply-immediately --region eu-west-1
-
-done
-
+sleep 60
+check
 else 
 :
 fi
-
